@@ -792,6 +792,15 @@
 
             .hero-grid,
             .about-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .hero-image {
+                order: -1;
+            }
+
             .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 60px;
@@ -806,13 +815,11 @@
                 bottom: -20px;
                 left: auto;
             }
-
-            .hero-image {
-                order: -1;
-            }
         }
 
         @media (max-width: 768px) {
+
+            /* ── NAV ── */
             .nav-links {
                 position: fixed;
                 top: 0;
@@ -823,6 +830,7 @@
                 flex-direction: column;
                 justify-content: center;
                 gap: 40px;
+                font-size: 1.2rem;
                 transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
                 z-index: 1000;
             }
@@ -847,114 +855,250 @@
                 transform: translateY(-8px) rotate(-45deg);
             }
 
-            .stats-grid {
-                grid-template-columns: 1fr 1fr;
+            /* ── HERO ── */
+            .hero {
+                padding: 100px 0 60px;
             }
 
-            .hero h1 {
-                font-size: 2.5rem;
-                text-align: center;
-            }
-
-            .hero-content {
+            .hero-grid {
                 display: flex;
                 flex-direction: column;
+                gap: 32px;
                 align-items: center;
                 text-align: center;
             }
 
+            /* Text FIRST, Photo SECOND */
+            .hero-content {
+                order: 1;
+                width: 100%;
+            }
+
+            .hero-image {
+                order: 2;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
             .hero-p {
-                margin: 0 auto 32px;
+                font-size: 1rem;
+                margin: 0 auto 28px;
+                max-width: 340px;
             }
 
             .hero-btns {
-                justify-content: center;
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
                 width: 100%;
             }
 
             .hero-btns .btn {
-                flex: 1;
+                width: 100%;
+                max-width: 320px;
                 justify-content: center;
-                max-width: 240px;
             }
 
+            /* Compact photo */
             .hero-img-card {
-                max-width: 250px;
-                padding: 10px;
+                max-width: 200px;
+                padding: 8px;
                 margin: 0 auto;
             }
 
-            .dr-info {
-                position: relative;
-                bottom: 0;
-                right: 0;
-                left: 0;
-                margin: -20px auto 0;
-                max-width: 280px;
-                text-align: center;
-                padding: 16px;
+            .hero-img-card img {
+                aspect-ratio: 3/4;
             }
 
+            /* dr-info inline below image */
+            .dr-info {
+                position: relative;
+                bottom: auto;
+                right: auto;
+                left: auto;
+                margin: 10px auto 0;
+                max-width: 200px;
+                text-align: center;
+                padding: 12px 14px;
+                border-radius: 12px;
+            }
+
+            .dr-info h3 {
+                font-size: 0.9rem;
+            }
+
+            .dr-info p {
+                font-size: 0.75rem;
+            }
+
+            /* ── STATS ── */
+            .stats {
+                padding: 40px 0;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .stat-item h2 {
+                font-size: 2rem;
+            }
+
+            /* ── SECTIONS ── */
+            .services,
+            .about,
+            .testimonials,
+            .faq,
+            .contact-form-section {
+                padding: 60px 0;
+            }
+
+            .section-head {
+                margin-bottom: 40px;
+            }
+
+            .section-head h2 {
+                font-size: 1.9rem;
+            }
+
+            /* ── SERVICE CARDS ── */
             .services-grid,
             .testimonial-grid {
                 grid-template-columns: 1fr;
-                gap: 24px;
+                gap: 16px;
             }
 
-            .svc-card,
+            .svc-card {
+                padding: 24px;
+                text-align: center;
+            }
+
+            .svc-icon {
+                margin: 0 auto 16px;
+            }
+
+            /* ── TESTIMONIALS ── */
             .testi-card {
-                padding: 30px 20px;
+                padding: 24px 20px;
                 text-align: center;
             }
 
             .testi-head {
                 flex-direction: column;
-                text-align: center;
+                align-items: center;
             }
 
             .testi-avatar {
-                margin: 0 auto 12px;
+                margin: 0 auto 10px;
             }
 
+            /* ── ABOUT ── */
+            .about-grid {
+                gap: 32px;
+            }
+
+            .about-content h2 {
+                font-size: 1.9rem;
+            }
+
+            .about-content p {
+                font-size: 1rem;
+            }
+
+            /* ── FORM ── */
             .form-grid {
                 grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            /* Reset span-2 so it doesn't cause overflow on 1-col grid */
+            .span-2 {
+                grid-column: span 1;
             }
 
             .form-container {
-                padding: 30px;
+                padding: 24px 16px;
+                border-radius: 20px;
             }
 
-            .svc-icon {
-                margin: 0 auto 24px;
+            input,
+            textarea,
+            select {
+                font-size: 16px;
+                /* prevents iOS auto-zoom on focus */
+            }
+
+            /* ── CONTACT / FOOTER ── */
+            .contact-info-sec {
+                padding: 60px 0;
+                border-radius: 0;
+                margin: 0 0 40px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            /* ── BACK TO TOP ── */
+            .back-to-top {
+                bottom: 20px;
+                left: 16px;
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* ── iPhone SE & very small screens ── */
+        @media (max-width: 400px) {
+            .hero {
+                padding: 90px 0 50px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-img-card {
+                max-width: 150px;
+                padding: 8px;
+            }
+
+            .btn {
+                font-size: 0.9rem;
+                padding: 12px 16px;
+            }
+
+            .section-head h2 {
+                font-size: 1.7rem;
+            }
+
+            .stats-grid {
+                gap: 12px;
+            }
+
+            .stat-item h2 {
+                font-size: 1.8rem;
+            }
+
+            .form-container {
+                padding: 20px 12px;
             }
 
             .contact-info-sec {
-                border-radius: 0;
-                margin: 0 0 60px;
+                padding: 40px 0;
             }
 
-            .about-img {
-                display: flex;
-                justify-content: center;
-            }
-
-            .section-head {
-                padding: 0 5%;
-            }
-
-            .whatsapp-btn,
-            .back-to-top {
-                bottom: 20px;
-                width: 50px;
-                height: 50px;
-            }
-
-            .whatsapp-btn {
-                right: 20px;
-            }
-
-            .back-to-top {
-                left: 20px;
+            .hero-btns .btn {
+                font-size: 0.88rem;
+                padding: 11px 14px;
             }
         }
     </style>
